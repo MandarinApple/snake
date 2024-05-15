@@ -1,4 +1,5 @@
 from settings import *
+from reset import reset
 class Snake:
     def __init__(self, pygame, screen):
         self.pygame = pygame
@@ -24,7 +25,7 @@ class Snake:
         self.snake_body.append(snake_head)
         for i in self.snake_body:
             self.pygame.draw.rect(self.screen, GREEN, (i[0], i[1], SIZE, SIZE))
-            if self.snake_body > self.length:
+            if len(self.snake_body) > self.length:
                 del self.snake_body[0]
 
     def bord(self):
@@ -36,4 +37,8 @@ class Snake:
             self.x = WIDTH
         if self.y < 0:
             self.y = HEIGHT
-             
+
+    def gameover(self):
+        for i in self.snake_body[:-1]:
+            if i == [self.x, self.y]:
+                self.length = reset(self.screen)
