@@ -41,4 +41,6 @@ class Snake:
     def gameover(self):
         for i in self.snake_body[:-1]:
             if i == [self.x, self.y]:
+                gameover.play()
+                gameover.set_volume(0.5)
                 self.length = reset(self.screen)

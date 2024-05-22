@@ -6,6 +6,8 @@ from menu import menu
 from settings import *
 pygame.init()
 
+bg.play(loops = 1)
+bg.set_volume(0.4)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("snake")
 snake = Snake(pygame, screen)
@@ -19,6 +21,8 @@ def draw():
         xfood.x = random.randrange(10, WIDTH-10, 5)
         xfood.y = random.randrange(10, HEIGHT-10, 5)
         snake.length += 1
+        eat.play()
+        eat.set_volume(0.5)
     snake.move(vector)
     snake.bord()
     snake.snake()
